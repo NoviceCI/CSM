@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="UTF-8" />
+<meta
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+	name='viewport' />
+<title>Home page</title>
+
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+
+		<div class="box">
+			<table id="cartable">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>ประเภท</th>
+						<th>ทะเบียน</th>
+					</tr>
+				</thead>
+
+			</table>
+		</div>
+
+
+
+	</section>
+
+
+
+	<div layout:fragment="script">
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$('#cartable').dataTable();
+
+			});
+		</script>
+	</div>
+
+
+</body>
+
+</html>

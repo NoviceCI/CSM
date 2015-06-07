@@ -42,8 +42,6 @@ public class HomeController {
 			return "login/login";
 
 		}
-
-		
 		else {
 
 			List<User> list = userDao.login(user.getUsername(),
@@ -63,4 +61,6 @@ public class HomeController {
 
 	}
 
+	
+	
 }

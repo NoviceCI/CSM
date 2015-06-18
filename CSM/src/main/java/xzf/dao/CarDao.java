@@ -16,4 +16,9 @@ public interface CarDao extends CrudRepository<Car, Long>{
 	@Query("select c from Car c")
 	List<Car> getCars();
 	
+	@Query("select c from Car c ")
+	List<Car> getCarsDataTable();
+	
+	@Query("select c from Car c inner join c.imageses inner join c.customer where c.id=?1")
+	List<Car> getCarDetail(int id);
 }

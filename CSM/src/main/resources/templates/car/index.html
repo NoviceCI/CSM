@@ -9,28 +9,37 @@
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport' />
-<title>Home page</title>
+<title>Car Mangement</title>
 
 
 </head>
 <body>
-
+	<section layout:fragment="subhead" class="content-header">
+		<h1>
+			ส่วนการจัดการ รถ<small>การค้นหาและจัดการ</small>
+		</h1>
+	</section>
 	<section layout:fragment="content">
 
-		<div class="box">
-			<table id="cartable">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>ประเภท</th>
-						<th>ทะเบียน</th>
-					</tr>
-				</thead>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<table id="cartable" class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>เลขทะเบียน</th>
+								<th>หมายเลขตัวถัง</th>
+								<th>วันที่จดทะเบียน</th>
+								<th></th>
 
-			</table>
+							</tr>
+						</thead>
+
+					</table>
+				</div>
+
+			</div>
 		</div>
-
-
 
 	</section>
 
@@ -38,9 +47,28 @@
 
 	<div layout:fragment="script">
 		<script type="text/javascript">
+		
 			$(document).ready(function() {
 
-				$('#cartable').dataTable();
+				$("#cartable").dataTable({
+					 "ajax": 'ajax',
+					 "bAutoWidth": false,
+					 "bSort": false,
+					 "columns": [
+					             { "data": "registerNumber" },
+					             { "data": "chassis" },
+					             { "data": "registerDate" },
+					             { "mRender" : function(data, type, full){
+
+						             return '<a href="/car_detail?id='+full.id+'" class="btn bg-maroon btn-flat">ดูรายละเอียดเพิ่มเติม</a>'+
+						             		'<button class="btn btn-flat btn-success">แก้ไข</button>'+
+						             		'<button class="btn btn-flat btn-danger">ลบ</button>'
+						              }
+					              }
+
+					         ]
+					 
+				});		
 
 			});
 		</script>

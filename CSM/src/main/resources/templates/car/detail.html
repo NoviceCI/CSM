@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="UTF-8" />
+<meta
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+	name='viewport' />
+<title></title>
+
+
+</head>
+<body>
+	<section layout:fragment="subhead" class="content-header">
+		<h1>
+			ส่วนการจัดการ รถ<small>การค้นหาและจัดการ</small>
+		</h1>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="row">
+
+			<div class="col-xs-6">
+				<div class="box">
+					<div class="row">
+						<div class="col-xs-12">
+							<h1 class="page-header" style="padding: 0px 11px 0px;">
+								<i class="fa fa-subway"> รายลเอียดรถ</i>
+							</h1>
+						</div>
+					</div>
+					<table class="table table-bordered">
+						<tr>
+							<td>หมายเลขทะเบียน</td>
+							<td><span th:text="${car.registerNumber}"></span></td>
+						</tr>
+						<tr>
+							<td>ประเถท</td>
+							<td><span th:text="${car.typeCode}"></span></td>
+						</tr>
+						<tr>
+							<td>วันทที่จดทะเบีย</td>
+							<td><span th:text="${car.registerDate}"></span></td>
+						</tr>
+						<tr>
+							<td>วันนัดชำระต่อภาษี</td>
+							<td><span th:text="${car.texdue}"></span></td>
+						</tr>
+						<tr>
+							<td>หมายเลขตัวถัง</td>
+							<td><span th:text="${car.chassis}"></span></td>
+						</tr>
+						<tr>
+							<td>รายละเอียดประกันภัย</td>
+							<td><span th:text="${car.insuranceDetail}"></span></td>
+						</tr>
+						<tr>
+							<td>หมายเหตุ</td>
+							<td><span th:text="${car.remark}"></span></td>
+						</tr>
+						<tr>
+							<td><img th:src="data:image/png;base64,+${image}" /></td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="box">
+					<div class="row">
+						<div class="col-xs-12">
+							<h1 class="page-header" style="padding: 0px 11px 0px;">
+								<i class="fa fa-user"> รายลเจ้าของรถ</i>
+							</h1>
+						</div>
+					</div>
+					<table class="table table-bordered">
+						<tr>
+							<td>ชื่อ</td>
+							<td><span th:text="${car.customer.name}"></span></td>
+						</tr>
+						<tr>
+							<td>นามสกุล</td>
+							<td><span th:text="${car.customer.lastname}"></span></td>
+						</tr>
+						<tr>
+							<td>เบอร์ติดต่อ </td>
+							<td>
+							<span th:text="${car.customer.tel1}"></span>
+							<br/>
+							<span th:text="${car.customer.tel2}">
+							</span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+
+	<div layout:fragment="script">
+		<script type="text/javascript">
+		
+			
+		</script>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
@@ -43,15 +42,13 @@
 
 	</section>
 
-
-
 	<div layout:fragment="script">
 		<script type="text/javascript">
 		
 			$(document).ready(function() {
 
 				$("#cartable").dataTable({
-					 "ajax": 'ajax',
+					 "ajax": 'json_cars',
 					 "bAutoWidth": false,
 					 "bSort": false,
 					 "columns": [

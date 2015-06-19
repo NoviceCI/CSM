@@ -2,8 +2,10 @@ package xzf.domain;
 
 // Generated Jun 3, 2015 3:07:26 PM by Hibernate Tools 3.4.0.CR1
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -40,7 +42,7 @@ public class Car implements java.io.Serializable {
 	private String chassis;
 	private String remark;
 	private Date createDate;
-	private Set<Images> imageses = new HashSet<Images>(0);
+	private List<Images> imageses =  new ArrayList<Images>();
 
 	public Car() {
 	}
@@ -59,7 +61,7 @@ public class Car implements java.io.Serializable {
 
 	public Car(Customer customer, String typeCode, String registerNumber,
 			Date registerDate, Date texdue, String insuranceDetail,
-			String chassis, String remark, Date createDate, Set<Images> imageses) {
+			String chassis, String remark, Date createDate, List<Images> imageses) {
 		this.customer = customer;
 		this.typeCode = typeCode;
 		this.registerNumber = registerNumber;
@@ -171,11 +173,11 @@ public class Car implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "car")
 	@JsonBackReference
-	public Set<Images> getImageses() {
+	public List<Images> getImageses() {
 		return this.imageses;
 	}
 
-	public void setImageses(Set<Images> imageses) {
+	public void setImageses(List<Images> imageses) {
 		this.imageses = imageses;
 	}
 

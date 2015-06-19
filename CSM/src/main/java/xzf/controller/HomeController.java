@@ -18,8 +18,6 @@ import xzf.domain.User;
 @Controller
 public class HomeController {
 
-	
-	
 	@Autowired
 	UserDao userDao;
 	
@@ -31,6 +29,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(User user) {
+		
 		return "login/login";
 	}
 

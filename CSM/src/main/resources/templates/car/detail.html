@@ -28,7 +28,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<h1 class="page-header" style="padding: 0px 11px 0px;">
-								<i class="fa fa-subway"> รายลเอียดรถ</i>
+								<i class="fa fa-subway"> รายละอียดรถ</i>
 							</h1>
 						</div>
 					</div>
@@ -62,7 +62,8 @@
 							<td><span th:text="${car.remark}"></span></td>
 						</tr>
 						<tr>
-							<td><img th:src="data:image/png;base64,+${image}" /></td>
+							<td>สำเนา</td>
+							<td><a th:href="${image}" target="_blank" class="btn btn-block btn-warning">ดาวโหลดน์สำเนา</a></td>
 						</tr>
 
 					</table>

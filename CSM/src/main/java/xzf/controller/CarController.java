@@ -1,7 +1,5 @@
 package xzf.controller;
 
-import java.awt.Image;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
 import xzf.dao.CarDao;
 import xzf.domain.Car;
@@ -24,7 +23,7 @@ public class CarController {
 	CarDao carDao;
 
 
-	@RequestMapping(value = "/ajax")
+	@RequestMapping(value = "/json_cars")
 	public @ResponseBody HashMap<String, List<Car>> ajax() {
 
 		HashMap<String, List<Car>> map = new HashMap<String, List<Car>>();
@@ -33,23 +32,23 @@ public class CarController {
 
 		return map;
 	}
-	
-	@RequestMapping(value="/car_detail",method = RequestMethod.GET)
-	public String showCarDetailPage(@RequestParam(value="id",required=true) int id,Model model){
-		
+
+	@RequestMapping(value = "/car_detail", method = RequestMethod.GET)
+	public String showCarDetailPage(
+			@RequestParam(value = "id", required = true) int id, Model model) {
+
 		Car car = carDao.getCarDetail(id).get(0);
-		
-		Images images = (Images) car.getImageses();
-		
-		//String base64ImageData = org.apache.tomcat.util.codec.binary.Base64.encodeBase64(images.getData()).toString();
-		
-		
-		model.addAttribute("car",car);
-		//model.addAttribute("image",base64ImageData);
-		
-		return "car/detail";	
+
+		Images images = car.getImageses().get(0);
+
+		String bytesSring = "data:image/png;base64,"
+				+ Base64Coder.encodeLines(images.getData());
+
+		model.addAttribute("car", car);
+		model.addAttribute("image", bytesSring);
+
+		return "car/detail";
 	}
-	
 
 	@RequestMapping(value = "car")
 	public String showCarPage() {

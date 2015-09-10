@@ -2,23 +2,16 @@ package xzf.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-
 import xzf.domain.Car;
 
+public interface CarDao {
 
-@Transactional
-public interface CarDao extends CrudRepository<Car, Long>{
-
-	@Query("select c from Car c")
-	List<Car> getCars();
 	
-	@Query("select c from Car c ")
-	List<Car> getCarsDataTable();
+	public Car getCarDetail (int id);
 	
-	@Query("select c from Car c inner join c.imageses inner join c.customer where c.id=?1")
-	List<Car> getCarDetail(int id);
+	public int countByKeyword(String keyword);
+	
+	public List<Car> findByKeyword(String keyword,int offset,int limit);
+	
+	
 }

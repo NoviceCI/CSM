@@ -29,10 +29,10 @@
 								<th>เลขทะเบียน</th>
 								<th>หมายเลขตัวถัง</th>
 								<th>วันที่จดทะเบียน</th>
-								<th></th>
-
 							</tr>
 						</thead>
+						<tbody>
+						</tbody>
 
 					</table>
 				</div>
@@ -47,23 +47,15 @@
 		
 			$(document).ready(function() {
 
-				$("#cartable").dataTable({
-					 "ajax": 'json_cars',
-					 "bAutoWidth": false,
-					 "bSort": false,
-					 "columns": [
-					             { "data": "registerNumber" },
-					             { "data": "chassis" },
-					             { "data": "registerDate" },
-					             { "mRender" : function(data, type, full){
-
-						             return '<a href="/car_detail?id='+full.id+'" class="btn bg-maroon btn-flat">ดูรายละเอียดเพิ่มเติม</a>'+
-						             		'<button class="btn btn-flat btn-success">แก้ไข</button>'+
-						             		'<button class="btn btn-flat btn-danger">ลบ</button>'
-						              }
-					              }
-
-					         ]
+				var dataTable = $("#cartable").dataTable({
+					"bServerSide" : true,
+					"bProcessing": true,
+			        "sAjaxSource" : "car_dt",
+					 aoColumns : [
+					              { data : 'registerNumber' },
+					              { data : 'chassis' },
+					              { data : 'registerDate'}
+					              ]
 					 
 				});		
 

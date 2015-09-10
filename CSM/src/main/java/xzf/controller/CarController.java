@@ -1,7 +1,5 @@
 package xzf.controller;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,27 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
-
-
-
-
-
-
-
-
-
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-
 import xzf.dao.CarDao;
 import xzf.domain.Car;
 import xzf.domain.Images;
 import xzf.domain.JQueryDataTableParamModel;
 import xzf.domain.jQueryDataTableResult;
-import xzf.util.HibernateProxyTypeAdapter;
 
 @Controller
 public class CarController {
@@ -45,15 +27,12 @@ public class CarController {
 	@RequestMapping(value = "/car_dt")
 	public @ResponseBody jQueryDataTableResult<Car> ajax(JQueryDataTableParamModel params) {
 		
-		
 		jQueryDataTableResult<Car> dataTableResult = new jQueryDataTableResult<Car>();
 		
-		
-		List<Car>  cars = carDao.findByKeyword(params.getsSearch(),
-			params.getiDisplayStart(),params.getiDisplayLength());
+		List<Car>  cars = carDao.findByKeyword(params.getsSearch(),params.getiDisplayStart(),params.getiDisplayLength());
 		
 		dataTableResult.setsEcho(params.getsEcho());
-		dataTableResult.setiTotalRecords(cars.size());
+		dataTableResult.setiTotalRecords(carDao.countAll());
 		dataTableResult.setiTotalDisplayRecords(carDao.countByKeyword(params.getsSearch()));
 		dataTableResult.setAaData(cars);
 

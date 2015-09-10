@@ -9,6 +9,8 @@ public interface CarDao {
 	
 	public Car getCarDetail (int id);
 	
+	public Integer countAll();
+	
 	public int countByKeyword(String keyword);
 	
 	public List<Car> findByKeyword(String keyword,int offset,int limit);

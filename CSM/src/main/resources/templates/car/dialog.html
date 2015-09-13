@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+<meta charset="utf8" />
+</head>
+
+<body>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-success">
+				<div class="box-header">
+					<i class="fa fa-car"></i>
+					<h3 class="box-title">ข้อมูลตัวรถ</h3>
+				</div>
+				<dl class="dl-horizontal">
+					<dt>หมายเลขทะเบียน</dt>
+					<dd id="regisNumber" th:text="${carInfo.car.registerNumber}"></dd>
+					<dt>วันที่จดทะเบียน</dt>
+					<dd th:text="${carInfo.car.registerDate}"></dd>
+					<dt>หมายเลขตัวถัง</dt>
+					<dd th:text="${carInfo.car.chassis}">></dd>
+					<dt>ประเภท</dt>
+					<dd th:text="${carInfo.car.typeCode}"></dd>
+					<dt>รายละเอียดประกันภัย</dt>
+					<dd th:text="${carInfo.car.insuranceDetail}"></dd>
+
+				</dl>
+			</div>
+
+			<div class="box box-warning">
+				<div class="box-header">
+					<i class="fa fa-user"></i>
+					<h3 class="box-title">ข้อมูลเจ้าของรถ</h3>
+				</div>
+				<dl class="dl-horizontal">
+					<dt>ชื่อเจ้าของรถ</dt>
+					<dd th:text="${carInfo.customer.name}"></dd>
+					<dt>นามสกุลเจ้าของรถ</dt>
+					<dd th:text="${carInfo.customer.lastname}"></dd>
+					<dt>เบอร์ติดต่อ 1</dt>
+					<dd th:text="${carInfo.customer.tel1}">></dd>
+					<dt>เบอร์ติดต่อ 2</dt>
+					<dd th:text="${carInfo.customer.tel2}"></dd>
+				</dl>
+
+			</div>
+
+			<div class="box box-info">
+				<div class="box-header">
+					<i class="fa fa-book"></i>
+					<h3 class="box-title">สำเนาทะเบียรถ</h3>
+				</div>
+
+				<div th:each="img : ${carInfo.images}">
+					<table class="table table-bordered">
+						<tbody>
+							<tr style="text-align:center">
+								<td><img id="img-doc" th:src="${img}"
+									style="width: 100px; height: 100px" /></td>
+								<td><a id="dl" class="btn btn-info pull-left"
+									download="FILENAME.png" th:href="${img}"
+									style="margin-right: 5px;"> <i class="fa fa-download"></i>
+										ดาวโหลดน์สำเนา
+								</a>
+									<button data-action="printbtn" class="btn btn-primary pull-left" style="margin-right: 5px;">
+		<i class="fa fa-print"></i> พิมพ์สำเนา
+	</button>
+								
+								
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

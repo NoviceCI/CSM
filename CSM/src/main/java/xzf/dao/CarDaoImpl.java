@@ -4,34 +4,35 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import xzf.domain.Car;
-
 @Repository
 public class CarDaoImpl implements CarDao {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
+
 	@Override
 	public Car getCarDetail(int id) {
-		// TODO Auto-generated method stub
-
-		/*
-		 * sessionFactory.getCurrentSession() .createCriteria(Car.class)
-		 * .add(Restrictions.like("registerNumber",keyword,MatchMode.ANYWHERE))
-		 * .list();
-		 */
-		return null;
+		return (Car) entityManager
+				.unwrap(Session.class)
+				.createCriteria(Car.class)
+				.add(Restrictions.eq("id",id))
+				.setFetchMode("customer",FetchMode.JOIN)
+				.setFetchMode("imageses",FetchMode.JOIN)
+				.uniqueResult();
+				
 	}
 
-	@Transactional
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Car> findByKeyword(String keyword, int offset, int limit) {
@@ -44,7 +45,8 @@ public class CarDaoImpl implements CarDao {
 				.add(Restrictions.like("registerNumber", keyword,
 						MatchMode.ANYWHERE)).list();
 	}
-
+	
+	
 	@Override
 	public int countByKeyword(String keyword) {
 		return ((Number) entityManager

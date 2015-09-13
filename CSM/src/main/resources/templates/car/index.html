@@ -55,7 +55,10 @@
 					 aoColumns : [
 					              { data : 'registerNumber' },
 					              { data : 'chassis' },
-					              { data : 'registerDate'}
+					              { mRender : function(data, type, full){
+					            	  return convertDateToShow(full.registerDate);
+					              }}
+					              	
 					              ]
 					 
 				});		

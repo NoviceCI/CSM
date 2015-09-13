@@ -17,6 +17,14 @@
 		<h1>
 			ส่วนการจัดการ รถ<small>การค้นหาและจัดการ</small>
 		</h1>
+		<br/>
+		<b>คำแนะนำการใช้งาน</b>
+		<ul>
+		
+		<li>ข้อมูลเรียงลำดับตามที่เพิ่มเข้าไปล่าสุด</li>
+		<li>การค้นหาสามารถค้นหาได้โดย เลขทะเบียนรถเป็นหลัก</li>
+		<li>หากต้องการดูข้อมูลแบบละเอียด กดปุ่มด้านขวามือ</li>
+		</ul>
 	</section>
 	<section layout:fragment="content">
 
@@ -33,7 +41,7 @@
 								<th></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody style="text-align: center">
 						</tbody>
 
 					</table>
@@ -55,9 +63,9 @@
                   <div id="modal-body" class="modal-body">
                     <p>One fine body…</p>
                   </div>
-                  <div class="modal-footer">
+                  <!--  >div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">ปิดหน้าต่าง</button>
-                  </div>
+                  </div -->
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
             </div>
@@ -82,11 +90,24 @@
 					              }},
 					              { data : 'chassis' },
 					              { mRender : function(data,type,full){
-					            	  return '<button class="btn btn-block btn-info" data-action="carinfo" data-key="'+full.id+'">แสดงทั้งหมด</button>';
+					            	  return '<button class="btn btn-app" data-action="carinfo" data-key="'+full.id+'"><i class="fa fa-info-circle"></i>แสดงแบบละเอียด</button>';
 					              }}
 					              	
-					              ]
-					 
+					              ],
+			    language: {
+			      "lengthMenu": "แสดง _MENU_ รายการ ต่อ หน้า",
+			      "zeroRecords": "ไม่พบ - ขอภัย",
+			      "info": "กำลังแสดงpage _PAGE_ จาก _PAGES_",
+			      "infoEmpty": "ไม่พบผลลัพธ์....",
+			      "infoFiltered": "(กรอง จาก _MAX_ รายการ)",
+			      "search":         "ค้นหา:",
+			      "paginate": {
+			        "first":      "หน้าแรก",
+			        "last":       "หน้าสุดท้าย",
+			        "next":       "ถัดไป",
+			        "previous":   "ก่อนหน้า"
+			      }
+			    }
 				});		
 				
 				// Blinding event to button on datatables

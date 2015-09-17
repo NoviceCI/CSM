@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="UTF-8" />
+<meta
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+	name='viewport' />
+<title>Car Mangement</title>
+
+
+</head>
+<body>
+	<section layout:fragment="subhead" class="content-header">
+		<h1>
+			ส่วนการแสดงภาพรวมระบบ<small></small>
+		</h1>
+		<br />
+	</section>
+	<section layout:fragment="content">
+		<div class="row">
+
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-green"><i
+						class="ion ion-model-s"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">จำนวนรภทั้งหมดในระบบ</span> <span
+							class="info-box-number" id="car_stat">760</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- fix for small devices only -->
+			<div class="clearfix visible-sm-block"></div>
+
+			<!-- /.col -->
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-yellow"><i
+						class="ion ion-ios-people-outline"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">ลูกค้าทั้งหมดในระบบ</span> <span
+							class="info-box-number" id="customer_stat">2,000</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<div class="row">
+
+			<div class="col-md-12">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<h3 class="box-title">สัดส่วนประเภทรถทั้งหมดในระบบ</h3>
+						<div class="box-tools pull-right">
+							<button class="btn btn-box-tool" data-widget="collapse">
+								<i class="fa fa-minus"></i>
+							</button>
+							<button class="btn btn-box-tool" data-widget="remove">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="chart-responsive">
+									<canvas id="pieChart" height="190" width="257"
+										style="width: 257px; height: 190px;"></canvas>
+								</div>
+								<!-- ./chart-responsive -->
+							</div>
+							<!-- /.col -->
+							<div class="col-md-4">
+								<ul class="chart-legend clearfix" id="chart-legend">
+									<!-- lengern gerea -->
+								</ul>
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.box-body -->
+
+					<!-- /.footer -->
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+	</section>
+
+	<div layout:fragment="script">
+		<script type="text/javascript" src="chartConfig.js"></script>
+	</div>
+
+
+</body>
+
+</html>

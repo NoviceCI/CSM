@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import xzf.dao.CarDao;
 import xzf.dao.CustomerDao;
-import xzf.domain.Car;
 import xzf.dto.DashInfo;
 import xzf.dto.PieChart;
 

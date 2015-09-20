@@ -60,7 +60,7 @@ public class CarController {
 		return "car/dialog";
 	}
 
-	@RequestMapping(value = "car")
+	@RequestMapping(value = "/car")
 	public String showCarPage() {
 		return "car/index";
 	}

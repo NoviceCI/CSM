@@ -19,12 +19,12 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-	@RequestMapping(value= "customer")
+	@RequestMapping(value= "/customer")
 	public String showCustomerPage(){
 		return "customer/index";
 	}
 	
-	@RequestMapping(value= "customer_dt")
+	@RequestMapping(value= "/customer_dt")
 	public @ResponseBody jQueryDataTableResult<Customer> ajax (JQueryDataTableParamModel params){
 		
 		jQueryDataTableResult<Customer> dataTableResult = new jQueryDataTableResult<Customer>();
